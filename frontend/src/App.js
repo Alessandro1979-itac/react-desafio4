@@ -31,7 +31,10 @@ export default function App() {
     const isDeleted = await api.deleteGrade(gradeToDelete);
 
     if (isDeleted) {
-      const deletedGradeIndex = allGrades.findIndex((grade) => grade.id === gradeToDelete.id);
+      const deletedGradeIndex = allGrades.findIndex(
+        (grade) => grade.id === gradeToDelete.id
+      );
+
       const newGrades = Object.assign([], allGrades);
       newGrades[deletedGradeIndex].isDeleted = true;
       newGrades[deletedGradeIndex].value = 0;
@@ -45,8 +48,8 @@ export default function App() {
     setIsModalOpen(true);
   };
 
-  const handlePersistData = async (FormData) => {
-    const { id, newValue } = FormData;
+  const handlePersistData = async (formData) => {
+    const { id, newValue } = formData;
 
     const newGrades = Object.assign([], allGrades);
 
